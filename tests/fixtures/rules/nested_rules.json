@@ -1,0 +1,12 @@
+{
+    "base_rule": {
+        "static1": 10,
+        "comparitor": ">",
+        "static2": 5
+    },
+    "nested_and_static": {
+        "nested1": "base_rule",
+        "comparitor": "&&",
+        "static2": true
+    }
+}

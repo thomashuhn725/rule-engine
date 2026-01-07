@@ -1,0 +1,22 @@
+{
+    "both_true": {
+        "static1": true,
+        "comparitor": "&&",
+        "static2": true
+    },
+    "both_one_false": {
+        "static1": true,
+        "comparitor": "&&",
+        "static2": false
+    },
+    "either_one_true": {
+        "static1": false,
+        "comparitor": "||",
+        "static2": true
+    },
+    "either_both_false": {
+        "static1": false,
+        "comparitor": "||",
+        "static2": false
+    }
+}

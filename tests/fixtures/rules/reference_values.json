@@ -1,0 +1,17 @@
+{
+    "ref_greater_static": {
+        "reference1": "user.age",
+        "comparitor": ">",
+        "static2": 18
+    },
+    "ref_equals_static": {
+        "reference1": "user.name",
+        "comparitor": "==",
+        "static2": "John"
+    },
+    "ref_nested_path": {
+        "reference1": "order.items.0.price",
+        "comparitor": "==",
+        "static2": 99.99
+    }
+}

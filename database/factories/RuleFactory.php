@@ -21,12 +21,20 @@ class RuleFactory extends Factory
     {
         return [
             'name' => fake()->unique()->slug(3),
+            'category' => null,
             'value_1_type' => 'reference_value',
             'value_1_id' => ReferenceValue::factory(),
             'comparitor_id' => Comparitor::factory(),
             'value_2_type' => 'static_value',
             'value_2_id' => StaticValue::factory(),
         ];
+    }
+
+    public function inCategory(string $category): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'category' => $category,
+        ]);
     }
 
     public function withReferenceValues(): static

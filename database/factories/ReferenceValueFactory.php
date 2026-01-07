@@ -20,4 +20,11 @@ class ReferenceValueFactory extends Factory
             'node' => fake()->words(3, true),
         ];
     }
+
+    public function withNode(string $node): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'node' => $node,
+        ]);
+    }
 }

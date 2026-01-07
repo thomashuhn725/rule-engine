@@ -20,4 +20,11 @@ class StaticValueFactory extends Factory
             'value' => fake()->word(),
         ];
     }
+
+    public function withValue(mixed $value): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'value' => $value,
+        ]);
+    }
 }
