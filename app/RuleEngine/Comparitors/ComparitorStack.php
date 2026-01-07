@@ -1,19 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\RuleEngine\Comparitors;
 
-use App\RuleEngine\Comparitors\Handlers\Both;
-use App\RuleEngine\Comparitors\Handlers\Either;
-use App\RuleEngine\Comparitors\Handlers\Equals;
-use App\RuleEngine\Comparitors\Handlers\Greater;
-use App\RuleEngine\Comparitors\Handlers\Less;
-use App\RuleEngine\Comparitors\Handlers\Not;
-use App\RuleEngine\Comparitors\Handlers\Regex;
-use App\RuleEngine\Comparitors\Handlers\Strict;
+use DirectoryIterator;
 
 class ComparitorStack
 {
-    private const string HANDLER_DIRECTORY = __DIR__.'/Handlers';
+    private const string HANDLER_DIRECTORY = __DIR__ . '/Handlers';
+
+    private const string HANDLER_NAMESPACE = 'App\\RuleEngine\\Comparitors\\Handlers\\';
 
     private ?ComparitorHandler $handlerStack = null;
 
@@ -29,7 +26,7 @@ class ComparitorStack
 
     public static function make(): self
     {
-        if (self::$instance !== null) {
+        if (self::$instance) {
             return self::$instance;
         }
 
@@ -49,16 +46,21 @@ class ComparitorStack
      */
     private static function getHandlersFromDirectory(string $path): array
     {
-        return [
-            new Equals,
-            new Greater,
-            new Less,
-            new Both,
-            new Either,
-            new Regex,
-            new Not,
-            new Strict,
-        ];
+        $handlers = [];
+
+        foreach (new DirectoryIterator($path) as $file) {
+            if ($file->isDot() || $file->getExtension() !== 'php') {
+                continue;
+            }
+
+            $className = self::HANDLER_NAMESPACE . $file->getBasename('.php');
+
+            if (is_subclass_of($className, ComparitorHandler::class)) {
+                $handlers[] = new $className();
+            }
+        }
+
+        return $handlers;
     }
 
     /**
@@ -66,16 +68,12 @@ class ComparitorStack
      */
     private function buildStack(array $comparitors): void
     {
-        if (empty($comparitors)) {
-            return;
-        }
-
-        $this->handlerStack = $comparitors[0];
+        $this->handlerStack = array_shift($comparitors);
         $current = $this->handlerStack;
 
-        for ($i = 1; $i < count($comparitors); $i++) {
-            $current->next = $comparitors[$i];
-            $current = $current->next;
+        while ($handler = array_shift($comparitors)) {
+            $current->next = $handler;
+            $current = $handler;
         }
     }
 }

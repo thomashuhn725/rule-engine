@@ -1,38 +1,43 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\RuleEngine\DataSources;
 
+use App\RuleEngine\Comparitors\ComparitorType;
 use App\RuleEngine\Contracts\RuleCollectionBuilder;
+use App\RuleEngine\Factories\RuleCollectionBuilderFactory;
+use App\RuleEngine\Factories\ValueFactory;
 use App\RuleEngine\RuleDto;
+use App\RuleEngine\Values\Value;
 use App\RuleEngine\Values\ValueType;
 use Illuminate\Support\Collection;
+use RuntimeException;
 use stdClass;
 
-class RuleConfigCollectionBuilder implements RuleCollectionBuilder
+class RuleConfigCollectionBuilder extends RuleCollectionBuilderFactory implements RuleCollectionBuilder
 {
-    public function __construct(
-        private string $source
-    ) {}
-
     /**
      * @return Collection<int, RuleDto>
      */
     public function make(): Collection
     {
-        $rules = $this->get($this->source);
+        $rawRules = $this->get($this->source);
 
-        if ($rules instanceof stdClass) {
-            return collect(get_object_vars($rules))->map(
+        if ($rawRules instanceof stdClass) {
+            $this->rules = collect(get_object_vars($rawRules))->map(
                 fn (stdClass $rule, string $name) => $this->makeRule($name, $rule)
+            )->values();
+        } else {
+            $this->rules = collect($rawRules)->map(
+                fn (stdClass $rule, int|string $key) => $this->makeRule(
+                    is_string($key) ? $key : "rule_{$key}",
+                    $rule
+                )
             )->values();
         }
 
-        return collect($rules)->map(
-            fn (stdClass $rule, int|string $key) => $this->makeRule(
-                is_string($key) ? $key : "rule_{$key}",
-                $rule
-            )
-        )->values();
+        return $this->rules;
     }
 
     /**
@@ -43,13 +48,13 @@ class RuleConfigCollectionBuilder implements RuleCollectionBuilder
         $contents = file_get_contents($path);
 
         if ($contents === false) {
-            throw new \RuntimeException("Unable to read config file: {$path}");
+            throw new RuntimeException("Unable to read config file: {$path}");
         }
 
         $decoded = json_decode($contents);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new \RuntimeException("Invalid JSON in config file: {$path}");
+            throw new RuntimeException("Invalid JSON in config file: {$path}");
         }
 
         return $decoded;
@@ -57,40 +62,37 @@ class RuleConfigCollectionBuilder implements RuleCollectionBuilder
 
     private function makeRule(string $name, stdClass $rule): RuleDto
     {
-        [$value1Type, $value1] = $this->resolveValue($rule, 1);
-        [$value2Type, $value2] = $this->resolveValue($rule, 2);
+        $rules = $this->rules ?? collect();
 
         return new RuleDto(
             name: $name,
-            value1Type: $value1Type,
-            value1: $value1,
-            comparitorType: $rule->comparitor,
-            value2Type: $value2Type,
-            value2: $value2,
+            value1: $this->resolveValue($rule, 1, $rules),
+            comparitorType: ComparitorType::from($rule->comparitor),
+            value2: $this->resolveValue($rule, 2, $rules),
         );
     }
 
     /**
-     * @return array{ValueType, mixed}
+     * @param  Collection<int, RuleDto>  $rules
      */
-    private function resolveValue(stdClass $rule, int $position): array
+    private function resolveValue(stdClass $rule, int $position, Collection $rules): Value
     {
         $staticKey = "static{$position}";
         $nestedKey = "nested{$position}";
         $referenceKey = "reference{$position}";
 
         if (property_exists($rule, $staticKey) && $rule->$staticKey !== null) {
-            return [ValueType::Static, $rule->$staticKey];
+            return ValueFactory::makeValue(ValueType::Static, $rule->$staticKey, $rules);
         }
 
         if (property_exists($rule, $nestedKey) && $rule->$nestedKey !== null) {
-            return [ValueType::Nested, $rule->$nestedKey];
+            return ValueFactory::makeValue(ValueType::Nested, $rule->$nestedKey, $rules);
         }
 
         if (property_exists($rule, $referenceKey) && $rule->$referenceKey !== null) {
-            return [ValueType::Reference, $rule->$referenceKey];
+            return ValueFactory::makeValue(ValueType::Reference, $rule->$referenceKey, $rules);
         }
 
-        throw new \RuntimeException("No value found for position {$position} in rule");
+        throw new RuntimeException("No value found for position {$position} in rule");
     }
 }

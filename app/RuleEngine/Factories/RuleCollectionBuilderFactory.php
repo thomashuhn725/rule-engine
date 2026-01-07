@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\RuleEngine\Factories;
 
 use App\RuleEngine\Comparitors\ComparitorType;
@@ -18,14 +20,13 @@ class RuleCollectionBuilderFactory
     public const string SOURCE_TYPE_FILE = 'file';
 
     /** @var Collection<int, RuleDto> */
-    protected static Collection $rules;
+    protected Collection $rules;
 
-    protected static string $source;
+    protected string $source;
 
-    protected function __construct(
-        string $source
-    ) {
-        static::$source = $source;
+    public function __construct(string $source)
+    {
+        $this->source = $source;
     }
 
     /**
@@ -40,12 +41,12 @@ class RuleCollectionBuilderFactory
         };
     }
 
-    protected static function resolveComparitorType(string $comparitor): ComparitorType
+    protected function resolveComparitorType(string $comparitor): ComparitorType
     {
-        return ComparitorType::fromSymbol($comparitor);
+        return ComparitorType::from($comparitor);
     }
 
-    protected static function resolveValueType(string $type): ValueType
+    protected function resolveValueType(string $type): ValueType
     {
         return ValueType::from($type);
     }

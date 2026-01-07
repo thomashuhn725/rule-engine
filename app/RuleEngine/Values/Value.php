@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\RuleEngine\Values;
 
 use App\RuleEngine\RuleDto;
@@ -7,41 +9,37 @@ use Illuminate\Support\Collection;
 
 abstract class Value
 {
-    /** @var array<mixed> */
-    protected array $data;
-
     protected mixed $valRef;
-
-    protected bool $hasValue;
 
     protected mixed $cachedValue = null;
 
     /**
-     * @param  Collection<int, mixed>  $data
      * @param  Collection<int, RuleDto>  $rules
      */
     public function __construct(
-        Collection $data,
         mixed $valRef,
         protected Collection $rules
     ) {
-        $this->data = $data->all();
         $this->valRef = $valRef;
-        $this->hasValue = $this->checkHasValue();
     }
 
     /**
      * Gets the value if it exists.
      * Returns true if value exists, false otherwise.
      * The actual value is passed by reference.
+     *
+     * @param  Collection<int, mixed>  $data
      */
-    public function getValue(mixed &$value = null): bool
+    public function getValue(Collection $data, mixed &$value = null): bool
     {
-        if (! $this->hasValue) {
+        if (! $this->checkHasValue($data)) {
             return false;
         }
 
-        $this->cacheValue();
+        if ($this->cachedValue === null) {
+            $this->cachedValue = $this->findValue($data);
+        }
+
         $value = $this->cachedValue;
 
         return true;
@@ -49,14 +47,13 @@ abstract class Value
 
     abstract public function getType(): ValueType;
 
-    protected function cacheValue(): void
-    {
-        if ($this->cachedValue === null && $this->hasValue) {
-            $this->cachedValue = $this->findValue();
-        }
-    }
+    /**
+     * @param  Collection<int, mixed>  $data
+     */
+    abstract protected function checkHasValue(Collection $data): bool;
 
-    abstract protected function checkHasValue(): bool;
-
-    abstract protected function findValue(): mixed;
+    /**
+     * @param  Collection<int, mixed>  $data
+     */
+    abstract protected function findValue(Collection $data): mixed;
 }

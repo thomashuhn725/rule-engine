@@ -1,43 +1,48 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\RuleEngine\Comparitors;
 
 use App\RuleEngine\RuleDto;
 use App\RuleEngine\Values\Value;
+use Illuminate\Support\Collection;
+use RuntimeException;
 
 abstract class ComparitorHandler
 {
     public ?self $next = null;
 
-    public function handle(RuleDto $rule): bool
+    /**
+     * @param  Collection<int, mixed>  $data
+     */
+    public function handle(RuleDto $rule, Collection $data): bool
     {
         if ($rule->comparitorType === $this->getComparitorType()) {
             $value1 = null;
             $value2 = null;
 
-            $hasValue1 = $rule->value1->getValue($value1);
-            $hasValue2 = $rule->value2->getValue($value2);
+            $hasValue1 = $rule->value1->getValue($data, $value1);
+            $hasValue2 = $rule->value2->getValue($data, $value2);
 
             if (! $hasValue1 || ! $hasValue2) {
                 return false;
             }
 
-            return $this->compare($rule->value1, $rule->value2);
+            return $this->compare($rule->value1, $rule->value2, $data);
         }
 
         if ($this->next !== null) {
-            return $this->next->handle($rule);
+            return $this->next->handle($rule, $data);
         }
 
-        throw new \RuntimeException("No handler found for comparitor type: {$rule->comparitorType->value}");
+        throw new RuntimeException("No handler found for comparitor type: {$rule->comparitorType->value}");
     }
 
-    abstract protected function compare(Value $value1, Value $value2): bool;
+    /**
+     * @param  Collection<int, mixed>  $data
+     */
+    abstract protected function compare(Value $value1, Value $value2, Collection $data): bool;
 
     abstract protected function getComparitorType(): ComparitorType;
-
-    public static function fromSymbol(string $symbol): self
-    {
-        return ComparitorStack::make()->get();
-    }
 }
