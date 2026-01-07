@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "docker",
+            "args": [
+                "exec", "-i",
+                "laradock-workspace-1",
+                "sh", "-c",
+                "cd rule-engine && php artisan boost:mcp"
+            ]
+        }
+    }
+}

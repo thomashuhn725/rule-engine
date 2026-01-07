@@ -1,0 +1,309 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram name="Page-1" id="cISP1Khvq7kinpILGKkx">
+    <mxGraphModel dx="5496" dy="-981" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9vepedrYo80RgY-guI-a-616" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(27, 29, 30);&quot;&gt;RuleEvaluator&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="-1380" y="2760" width="2550" height="970" as="geometry">
+            <mxRectangle x="-1000" y="2540" width="120" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-617" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(27, 29, 30);&quot;&gt;RuleCollectionBuilderFactory&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeWidth=2;" parent="9vepedrYo80RgY-guI-a-616" vertex="1">
+          <mxGeometry y="160" width="1700" height="810" as="geometry">
+            <mxRectangle x="-1360" y="2920" width="200" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-618" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(27, 29, 30);&quot;&gt;RuleOrmCollectionBuilder&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeWidth=2;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="315" y="619.99" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-619" value="Get config Model records using the &quot;source&quot; as a &quot;category&quot; by which to query the `rules` table" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-618" vertex="1">
+          <mxGeometry x="10.000000000000114" y="31.730000000000018" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-620" value="For each rule Model" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.loop;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-618" vertex="1">
+          <mxGeometry x="195" y="66.73000000000002" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-621" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-618" source="9vepedrYo80RgY-guI-a-619" target="9vepedrYo80RgY-guI-a-620" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="82" />
+              <mxPoint x="190" y="82" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-622" value="Resolve ComparitorType" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="635" y="570" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-623" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-627" target="9vepedrYo80RgY-guI-a-622" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="550" />
+              <mxPoint x="605" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-624" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-622" target="9vepedrYo80RgY-guI-a-630" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="584.9999999999995" y="614.99" as="sourcePoint" />
+            <mxPoint x="624.75" y="700.0244827586209" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="700" y="614.99" />
+              <mxPoint x="700" y="614.99" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-625" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(27, 29, 30);&quot;&gt;RuleConfigCollectionBuilder&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeWidth=2;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="315" y="469.99" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-626" value="Get config items from JSON using the &quot;source&quot; as a filepath" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-625" vertex="1">
+          <mxGeometry x="10" y="30" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-627" value="For each rule config" style="html=1;dashed=0;whiteSpace=wrap;shape=mxgraph.dfd.loop;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-625" vertex="1">
+          <mxGeometry x="195" y="65" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-628" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-625" source="9vepedrYo80RgY-guI-a-626" target="9vepedrYo80RgY-guI-a-627" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="175" y="80" />
+              <mxPoint x="175" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-629" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-630" target="9vepedrYo80RgY-guI-a-669" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-630" value="Resolve ValueTypes" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="815" y="570" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-631" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(27, 29, 30);&quot;&gt;ValueFactory&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeWidth=2;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="995" y="170" width="320" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-632" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-631" source="9vepedrYo80RgY-guI-a-634" target="9vepedrYo80RgY-guI-a-637" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-633" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-632" vertex="1" connectable="0">
+          <mxGeometry x="-0.1171" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-634" value="Is Value nested Rule result?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-631" vertex="1">
+          <mxGeometry x="20" y="39.99000000000001" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-635" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-631" source="9vepedrYo80RgY-guI-a-637" target="9vepedrYo80RgY-guI-a-640" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-636" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-635" vertex="1" connectable="0">
+          <mxGeometry x="-0.0705" relative="1" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-637" value="Is Value static?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-631" vertex="1">
+          <mxGeometry x="20" y="199.99" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-638" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startArrow=none;startFill=0;endArrow=classic;endFill=1;" parent="9vepedrYo80RgY-guI-a-631" source="9vepedrYo80RgY-guI-a-640" target="9vepedrYo80RgY-guI-a-641" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-639" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-638" vertex="1" connectable="0">
+          <mxGeometry x="-0.57" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-640" value="Is Value&lt;div&gt;reference?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-631" vertex="1">
+          <mxGeometry x="20" y="359.99" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-641" value="Unsupported Type Exception" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-631" vertex="1">
+          <mxGeometry x="20" y="489.99" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-642" value="Make StaticValue" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-631" vertex="1">
+          <mxGeometry x="160.00000000000023" y="199.99" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-643" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-631" source="9vepedrYo80RgY-guI-a-637" target="9vepedrYo80RgY-guI-a-642" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-644" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-643" vertex="1" connectable="0">
+          <mxGeometry x="0.0054" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-645" value="Make ReferenceValue (with ArrayHelper)" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-631" vertex="1">
+          <mxGeometry x="160.00000000000023" y="359.99" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-646" value="Yes" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-631" source="9vepedrYo80RgY-guI-a-640" target="9vepedrYo80RgY-guI-a-645" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-647" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-634" target="9vepedrYo80RgY-guI-a-650" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="115" y="2800" as="sourcePoint" />
+            <mxPoint x="555" y="2800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-648" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-647" vertex="1" connectable="0">
+          <mxGeometry x="-0.0411" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-649" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-650" target="9vepedrYo80RgY-guI-a-654" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1355" y="410.0344827586209" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1335" y="260" />
+              <mxPoint x="1335" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-650" value="Make NestedValue (Value resolution later will be recursive)" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="1155.0000000000002" y="210" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-651" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-642" target="9vepedrYo80RgY-guI-a-654" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1355" y="419.9899999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-652" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-645" target="9vepedrYo80RgY-guI-a-654" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1355" y="430.0344827586209" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1335" y="580" />
+              <mxPoint x="1335" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-653" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-654" target="9vepedrYo80RgY-guI-a-655" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-654" value="Add to `rules` (RuleDtos)" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="1355" y="369.99" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-655" value="Retain for subsequent use" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="1375" y="530" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-656" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-658" target="9vepedrYo80RgY-guI-a-661" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="619.99" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-657" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-656" vertex="1" connectable="0">
+          <mxGeometry x="-0.1615" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-658" value="Rule Source Type&lt;div&gt;is JSON file?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="175" y="499.99" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-659" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-661" target="9vepedrYo80RgY-guI-a-662" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-660" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-659" vertex="1" connectable="0">
+          <mxGeometry x="-0.1808" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-661" value="&lt;span&gt;Rule Source Type&lt;/span&gt;&lt;div&gt;&lt;span&gt;is DB records?&lt;/span&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="175" y="651.72" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-662" value="Unsupported Type Exception" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="35" y="651.72" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-663" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-658" target="9vepedrYo80RgY-guI-a-626" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="274.99999999999955" y="549.99" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-664" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-663" vertex="1" connectable="0">
+          <mxGeometry x="-0.0667" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-665" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-661" target="9vepedrYo80RgY-guI-a-619" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="275" y="701.99" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-666" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="9vepedrYo80RgY-guI-a-665" vertex="1" connectable="0">
+          <mxGeometry x="-0.1333" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-667" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-620" target="9vepedrYo80RgY-guI-a-622" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="702" />
+              <mxPoint x="605" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-668" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-617" source="9vepedrYo80RgY-guI-a-669" target="9vepedrYo80RgY-guI-a-634" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="905" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-669" value="Instantiate empty `rules` Collection" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-617" vertex="1">
+          <mxGeometry x="815" y="380" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-698" value="&lt;span style=&quot;font-size: 12px; background-color: rgb(27, 29, 30);&quot;&gt;Console Command, API Route, or PhpUnit Test&lt;/span&gt;" style="swimlane;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeWidth=2;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="-1930" y="2920" width="550" height="810" as="geometry">
+            <mxRectangle x="-1900" y="2650" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-700" value="&lt;div&gt;Step 1&lt;/div&gt;Instantiate RuleEvaluator with all RuleDto configs" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-698" vertex="1">
+          <mxGeometry x="20" y="499.99" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-701" value="Rule Source&lt;div&gt;Type&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-698" vertex="1">
+          <mxGeometry x="220" y="479.99" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-702" value="Rule Source" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;" parent="9vepedrYo80RgY-guI-a-698" vertex="1">
+          <mxGeometry x="220" y="559.99" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-708" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-698" source="9vepedrYo80RgY-guI-a-700" target="9vepedrYo80RgY-guI-a-701" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="460.02448275862093" as="sourcePoint" />
+            <mxPoint x="511.4910852713176" y="550.0132558139537" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-709" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="9vepedrYo80RgY-guI-a-698" source="9vepedrYo80RgY-guI-a-700" target="9vepedrYo80RgY-guI-a-702" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="460.02448275862093" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="170" y="549.99" />
+              <mxPoint x="170" y="589.99" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-711" style="shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;dashed=1;dashPattern=1 1;entryX=-0.002;entryY=0.022;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="9vepedrYo80RgY-guI-a-712" target="9vepedrYo80RgY-guI-a-616" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-460" y="2910" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-712" value="&lt;span&gt;Containers like this correspond to the classes outlined in the UML that are suggested to be responsible for the respective segment of the processflow.&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;dashed=1;dashPattern=1 1;" parent="1" vertex="1">
+          <mxGeometry x="-1700" y="2790" width="197" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-715" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="9vepedrYo80RgY-guI-a-702" target="9vepedrYo80RgY-guI-a-658" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1864.9999999999998" y="3370" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-1560" y="3510" />
+              <mxPoint x="-1560" y="3470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9vepedrYo80RgY-guI-a-716" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;jumpStyle=arc;jumpSize=10;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="9vepedrYo80RgY-guI-a-701" target="9vepedrYo80RgY-guI-a-658" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1864.9999999999998" y="3370" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-1560" y="3430" />
+              <mxPoint x="-1560" y="3470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
