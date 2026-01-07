@@ -6,12 +6,12 @@ namespace App\RuleEngine\Comparitors\Handlers;
 
 use App\RuleEngine\Comparitors\ComparitorHandler;
 use App\RuleEngine\Comparitors\ComparitorType;
-use App\RuleEngine\Values\Value;
+use App\RuleEngine\Values\ValueResolver;
 use Illuminate\Support\Collection;
 
 class Either extends ComparitorHandler
 {
-    protected function compare(Value $value1, Value $value2, Collection $data): bool
+    protected function compare(ValueResolver $value1, ValueResolver $value2, Collection $data): bool
     {
         $val1 = null;
         $val2 = null;

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\RuleEngine\Factories;
 
 use App\RuleEngine\RuleDto;
-use App\RuleEngine\Values\NestedValue;
-use App\RuleEngine\Values\ReferenceValue;
-use App\RuleEngine\Values\StaticValue;
-use App\RuleEngine\Values\Value;
+use App\RuleEngine\Values\NestedValueResolver;
+use App\RuleEngine\Values\ReferenceValueResolver;
+use App\RuleEngine\Values\StaticValueResolver;
+use App\RuleEngine\Values\ValueResolver;
 use App\RuleEngine\Values\ValueType;
 use Illuminate\Support\Collection;
 
@@ -21,11 +21,11 @@ class ValueFactory
         ValueType $type,
         mixed $valRef,
         Collection $rules
-    ): Value {
+    ): ValueResolver {
         return match ($type) {
-            ValueType::Reference => new ReferenceValue($valRef, $rules),
-            ValueType::Nested => new NestedValue($valRef, $rules),
-            ValueType::Static => new StaticValue($valRef, $rules),
+            ValueType::Reference => new ReferenceValueResolver($valRef, $rules),
+            ValueType::Nested => new NestedValueResolver($valRef, $rules),
+            ValueType::Static => new StaticValueResolver($valRef, $rules),
         };
     }
 }

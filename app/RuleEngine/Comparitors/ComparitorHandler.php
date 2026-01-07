@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\RuleEngine\Comparitors;
 
 use App\RuleEngine\RuleDto;
-use App\RuleEngine\Values\Value;
+use App\RuleEngine\Values\ValueResolver;
 use Illuminate\Support\Collection;
 use RuntimeException;
 
@@ -42,7 +42,7 @@ abstract class ComparitorHandler
     /**
      * @param  Collection<int, mixed>  $data
      */
-    abstract protected function compare(Value $value1, Value $value2, Collection $data): bool;
+    abstract protected function compare(ValueResolver $value1, ValueResolver $value2, Collection $data): bool;
 
     abstract protected function getComparitorType(): ComparitorType;
 }

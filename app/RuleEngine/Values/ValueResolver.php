@@ -7,7 +7,7 @@ namespace App\RuleEngine\Values;
 use App\RuleEngine\RuleDto;
 use Illuminate\Support\Collection;
 
-abstract class Value
+abstract class ValueResolver
 {
     protected mixed $valRef;
 

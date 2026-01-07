@@ -6,23 +6,20 @@ namespace App\RuleEngine\Values;
 
 use Illuminate\Support\Collection;
 
-class ReferenceValue extends Value
+class StaticValueResolver extends ValueResolver
 {
     public function getType(): ValueType
     {
-        return ValueType::Reference;
+        return ValueType::Static;
     }
 
     protected function checkHasValue(Collection $data): bool
     {
-        return ArrayHelper::search($data->all(), (string) $this->valRef);
+        return true;
     }
 
     protected function findValue(Collection $data): mixed
     {
-        $match = null;
-        ArrayHelper::search($data->all(), (string) $this->valRef, $match);
-
-        return $match;
+        return $this->valRef;
     }
 }

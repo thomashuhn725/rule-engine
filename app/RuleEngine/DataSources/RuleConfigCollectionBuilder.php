@@ -9,7 +9,7 @@ use App\RuleEngine\Contracts\RuleCollectionBuilder;
 use App\RuleEngine\Factories\RuleCollectionBuilderFactory;
 use App\RuleEngine\Factories\ValueFactory;
 use App\RuleEngine\RuleDto;
-use App\RuleEngine\Values\Value;
+use App\RuleEngine\Values\ValueResolver;
 use App\RuleEngine\Values\ValueType;
 use Illuminate\Support\Collection;
 use RuntimeException;
@@ -75,7 +75,7 @@ class RuleConfigCollectionBuilder extends RuleCollectionBuilderFactory implement
     /**
      * @param  Collection<int, RuleDto>  $rules
      */
-    private function resolveValue(stdClass $rule, int $position, Collection $rules): Value
+    private function resolveValue(stdClass $rule, int $position, Collection $rules): ValueResolver
     {
         $staticKey = "static{$position}";
         $nestedKey = "nested{$position}";

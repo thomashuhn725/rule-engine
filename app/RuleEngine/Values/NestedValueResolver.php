@@ -7,7 +7,7 @@ namespace App\RuleEngine\Values;
 use App\RuleEngine\RuleDto;
 use Illuminate\Support\Collection;
 
-class NestedValue extends Value
+class NestedValueResolver extends ValueResolver
 {
     public function getType(): ValueType
     {
