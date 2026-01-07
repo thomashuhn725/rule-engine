@@ -45,6 +45,10 @@ class RuleConfigCollectionBuilder extends RuleCollectionBuilderFactory implement
      */
     private function get(string $path): stdClass|array
     {
+        if (! file_exists($path)) {
+            throw new RuntimeException("Unable to read config file: {$path}");
+        }
+
         $contents = file_get_contents($path);
 
         if ($contents === false) {
