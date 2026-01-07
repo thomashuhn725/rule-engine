@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\RuleEngine\DataSources;
 
-use App\Models\RuleModel;
+use App\Models\Rule;
 use App\RuleEngine\Contracts\RuleCollectionBuilder;
 use App\RuleEngine\Factories\RuleCollectionBuilderFactory;
 use App\RuleEngine\Factories\ValueFactory;
 use App\RuleEngine\RuleDto;
+use App\RuleEngine\Values\ValueType;
 use Illuminate\Support\Collection;
 
 class RuleOrmCollectionBuilder extends RuleCollectionBuilderFactory implements RuleCollectionBuilder
@@ -19,31 +20,60 @@ class RuleOrmCollectionBuilder extends RuleCollectionBuilderFactory implements R
     public function make(): Collection
     {
         $this->rules = $this->get($this->source)->map(
-            fn (RuleModel $model) => $this->makeRule($model)
+            fn (Rule $model) => $this->makeRule($model)
         );
 
         return $this->rules;
     }
 
     /**
-     * @return Collection<int, RuleModel>
+     * @return Collection<int, Rule>
      */
     private function get(string $source): Collection
     {
-        return RuleModel::query()
+        return Rule::query()
+            ->with(['comparitor', 'value1', 'value2'])
             ->where('category', $source)
             ->get();
     }
 
-    private function makeRule(RuleModel $model): RuleDto
+    private function makeRule(Rule $model): RuleDto
     {
         $rules = $this->rules ?? collect();
 
         return new RuleDto(
-            name: $model->name(),
-            value1: ValueFactory::makeValue($model->value1Type(), $model->value1(), $rules),
-            comparitorType: $this->resolveComparitorType($model->comparitor),
-            value2: ValueFactory::makeValue($model->value2Type(), $model->value2(), $rules),
+            name: $model->name,
+            value1: ValueFactory::makeValue(
+                $this->mapValueType($model->value_1_type),
+                $this->extractValue($model->value1),
+                $rules
+            ),
+            comparitorType: $this->resolveComparitorType($model->comparitor->symbol),
+            value2: ValueFactory::makeValue(
+                $this->mapValueType($model->value_2_type),
+                $this->extractValue($model->value2),
+                $rules
+            ),
         );
+    }
+
+    private function mapValueType(string $type): ValueType
+    {
+        return match ($type) {
+            'reference_value' => ValueType::Reference,
+            'nested_value' => ValueType::Nested,
+            'static_value' => ValueType::Static,
+            default => throw new \InvalidArgumentException("Unknown value type: {$type}"),
+        };
+    }
+
+    private function extractValue(mixed $valueModel): mixed
+    {
+        return match (true) {
+            $valueModel instanceof \App\Models\StaticValue => $valueModel->value,
+            $valueModel instanceof \App\Models\ReferenceValue => $valueModel->node,
+            $valueModel instanceof \App\Models\NestedValue => $valueModel->rule->name,
+            default => null,
+        };
     }
 }

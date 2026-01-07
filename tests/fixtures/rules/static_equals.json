@@ -1,0 +1,12 @@
+{
+    "equals_pass": {
+        "static1": 5,
+        "comparitor": "==",
+        "static2": 5
+    },
+    "equals_fail": {
+        "static1": 5,
+        "comparitor": "==",
+        "static2": 10
+    }
+}

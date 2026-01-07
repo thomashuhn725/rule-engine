@@ -1,0 +1,12 @@
+{
+    "regex_match": {
+        "static1": "hello world",
+        "comparitor": "~",
+        "static2": "/^hello/"
+    },
+    "regex_no_match": {
+        "static1": "goodbye world",
+        "comparitor": "~",
+        "static2": "/^hello/"
+    }
+}

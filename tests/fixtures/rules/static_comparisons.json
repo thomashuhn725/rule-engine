@@ -1,0 +1,42 @@
+{
+    "greater_pass": {
+        "static1": 10,
+        "comparitor": ">",
+        "static2": 5
+    },
+    "greater_fail": {
+        "static1": 5,
+        "comparitor": ">",
+        "static2": 10
+    },
+    "less_pass": {
+        "static1": 5,
+        "comparitor": "<",
+        "static2": 10
+    },
+    "less_fail": {
+        "static1": 10,
+        "comparitor": "<",
+        "static2": 5
+    },
+    "not_pass": {
+        "static1": 5,
+        "comparitor": "!",
+        "static2": 10
+    },
+    "not_fail": {
+        "static1": 5,
+        "comparitor": "!",
+        "static2": 5
+    },
+    "strict_pass": {
+        "static1": "hello",
+        "comparitor": "===",
+        "static2": "hello"
+    },
+    "strict_fail": {
+        "static1": 5,
+        "comparitor": "===",
+        "static2": "5"
+    }
+}

@@ -14,6 +14,7 @@ class Rule extends Model
 
     protected $fillable = [
         'name',
+        'category',
         'value_1_type',
         'value_1_id',
         'comparitor_id',
