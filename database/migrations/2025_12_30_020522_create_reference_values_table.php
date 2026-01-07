@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rule_models', function (Blueprint $table) {
+        Schema::create('reference_values', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50)->unique();
-            $table->string('value_1_type');
-            $table->string('value_1');
-            $table->string('comparitor');
-            $table->string('value_2_type');
-            $table->string('value_2');
-            $table->string('category', 50);
+            $table->string('node', 255)->index();
             $table->timestamps();
         });
     }
@@ -29,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rule_models');
+        Schema::dropIfExists('reference_values');
     }
 };
