@@ -295,9 +295,11 @@ If your application uses the `<Form>` component from Inertia, you can use Wayfin
 
 ## Code Style Guidelines
 
+- Adhere to PSR-12 styling rules
+- Include `declare(strict_types=1);` in all new and updated Php files after the initial `<?php`, and before the namespace if there is one.
 - Ensure there is a single empty linebreak at the end of each new or altered file
-- Try to avoid using `else`
-- Alternatives may include ternary operators, early returns, default behavior precluding the `if`, or breaking the given function up into more than one to facilitate one of the previous two approaches.
+- Try to avoid using `else`. Alternatives may include ternary operators, early returns, default behavior precluding 
+  the `if`, or breaking the given function up into more than one to facilitate one of the previous two approaches.
 
 === pint/core rules ===
 

@@ -1,20 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\RuleEngine\Comparitors\Handlers;
 
 use App\RuleEngine\Comparitors\ComparitorHandler;
 use App\RuleEngine\Comparitors\ComparitorType;
-use App\RuleEngine\Values\Value;
+use App\RuleEngine\Values\ValueResolver;
+use Illuminate\Support\Collection;
 
 class Strict extends ComparitorHandler
 {
-    protected function compare(Value $value1, Value $value2): bool
+    protected function compare(ValueResolver $value1, ValueResolver $value2, Collection $data): bool
     {
         $val1 = null;
         $val2 = null;
 
-        $value1->getValue($val1);
-        $value2->getValue($val2);
+        $value1->getValue($data, $val1);
+        $value2->getValue($data, $val2);
 
         return $val1 === $val2;
     }

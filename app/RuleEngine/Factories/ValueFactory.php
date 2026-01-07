@@ -1,31 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\RuleEngine\Factories;
 
 use App\RuleEngine\RuleDto;
-use App\RuleEngine\Values\NestedValue;
-use App\RuleEngine\Values\ReferenceValue;
-use App\RuleEngine\Values\StaticValue;
-use App\RuleEngine\Values\Value;
+use App\RuleEngine\Values\NestedValueResolver;
+use App\RuleEngine\Values\ReferenceValueResolver;
+use App\RuleEngine\Values\StaticValueResolver;
+use App\RuleEngine\Values\ValueResolver;
 use App\RuleEngine\Values\ValueType;
 use Illuminate\Support\Collection;
 
 class ValueFactory
 {
     /**
-     * @param  Collection<int, mixed>  $data
      * @param  Collection<int, RuleDto>  $rules
      */
     public static function makeValue(
         ValueType $type,
-        Collection $data,
         mixed $valRef,
         Collection $rules
-    ): Value {
+    ): ValueResolver {
         return match ($type) {
-            ValueType::Reference => new ReferenceValue($data, $valRef, $rules),
-            ValueType::Nested => new NestedValue($data, $valRef, $rules),
-            ValueType::Static => new StaticValue($data, $valRef, $rules),
+            ValueType::Reference => new ReferenceValueResolver($valRef, $rules),
+            ValueType::Nested => new NestedValueResolver($valRef, $rules),
+            ValueType::Static => new StaticValueResolver($valRef, $rules),
         };
     }
 }
